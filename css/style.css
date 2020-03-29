@@ -1,0 +1,154 @@
+@font-face {
+  font-family: 'Mr Dafoe';
+  src: url('../fonts/MrDafoe-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  display: block;
+  background-color: #181719;
+  font-family: serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+canvas {
+  width: 100%;
+  position: static;
+  z-index: -1;
+}
+
+div {
+  width: 50%;
+  margin: auto;
+  padding: 0;
+}
+
+h1 {
+  color: #840b82;
+  font-family: "Mr Dafoe", serif;
+  font-size: 96px;
+  text-shadow: 2px 2px #02f8fc;
+}
+
+h1,
+h2 {
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  color: white;
+}
+
+i {
+  border: solid darkblue;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+label {
+  font-size: 1.5em;
+  text-align: left;
+  color: #fff;
+  /* width: 75%; */
+  margin: 0 auto;
+}
+
+li {
+  text-align: left;
+  list-style-type: none;
+}
+
+.btn {
+  position: relative;
+  left: 20%;
+  text-align: left;
+  font-size: 1.5rem;
+}
+
+.button {
+  position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+  float: right;
+  left: 80%;
+  top: 80%;
+  font-size: 1.25rem;
+  background-color: darkorange;
+  border-color: darkorange;
+  border-radius: .5em;
+}
+
+.carousel-inner {
+  padding-top: 10%;
+}
+
+.carousel-item {
+  text-align: left;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.instructions {
+  font-size: 2rem;
+  margin-top: 10%;
+  display: block;
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.mx-auto {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.padded {
+  padding: 10px;
+}
+
+.summary {
+  margin-top: 10%;
+  display: none;
+}
+
+#retry {
+  display: none;
+}
+
+#submit {
+  display: none;
+}
+
+#myCarousel {
+  padding: 0;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 400px;
+  font-size: 1.5em;
+  display: none;
+  margin-top: 160px;
+}
+
+#overlay {
+  position: fixed;
+  display: block;
+  width: 100%;
+  min-height: 90%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 2;
+}
