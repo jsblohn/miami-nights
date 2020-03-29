@@ -28,6 +28,7 @@ function QuizModel() {
     return this.userAnswer === this.correctAnswer;
   }
 
+  // Present the questions for the quiz, one at a time
   this.getData = function () {
     return [new Question(
         "1", "The kinds of values that can be represented and manipulated in a \

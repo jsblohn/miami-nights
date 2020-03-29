@@ -1,3 +1,14 @@
+/*
+===============================================================================
+; Title:  canvas-script.js
+; Author: Jeff Shepherd, Janet Blohn
+; Modified By:
+; Date:   3/14/2020
+; Description: The page canvas for the JavaScript Quiz.
+; It creates the background image for the page.
+;==============================================================================
+*/
+
 let screenWidth = window.innerWidth;
 let screenHeight = window.innerHeight - 200;
 

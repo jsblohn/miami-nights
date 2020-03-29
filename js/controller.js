@@ -1,3 +1,14 @@
+/*
+===============================================================================
+; Title:  controller.js
+; Author: Jeff Shepherd, Janet Blohn
+; Modified By:
+; Date:   3/14/2020
+; Description: The controller for the JavaScript Quiz.
+; Defines events for the quiz
+;==============================================================================
+*/
+
 let model = new QuizModel();
 let viewModel = new ViewModel(model);
 viewModel.buildHtml();
