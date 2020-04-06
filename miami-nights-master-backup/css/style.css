@@ -16,19 +16,12 @@ body {
 
 canvas {
   width: 100%;
-  width: min-content;
   position: static;
   z-index: -1;
 }
 
 div {
   width: 50%;
-  margin: auto;
-  padding: 0;
-}
-
-.div2 { /*add 4/4*/
-  width: 66%;
   margin: auto;
   padding: 0;
 }
@@ -50,18 +43,12 @@ h2 {
   color: white;
 }
 
-.tbl {
-  border: none;
-  width: 60%;
-  margin: 0 auto;
-}
-
-/*i {
+i {
   border: solid darkblue;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
-}*/
+}
 
 label {
   font-size: 1.5em;
@@ -78,7 +65,7 @@ li {
 
 .btn {
   position: relative;
-  left: 6%;/* was 20%; 4/4 */
+  left: 20%;
   text-align: left;
   font-size: 1.5rem;
 }
@@ -88,7 +75,7 @@ li {
   font-family: Arial, Helvetica, sans-serif;
   float: right;
   left: 80%;
-  top: 70%; /*was 80%*/
+  top: 80%;
   font-size: 1.25rem;
   background-color: darkorange;
   border-color: darkorange;
@@ -96,7 +83,7 @@ li {
 }
 
 .carousel-inner {
-  padding-top: 6%; /* was 10%;*/ 
+  padding-top: 10%;
 }
 
 .carousel-item {
@@ -131,7 +118,7 @@ li {
 }
 
 .summary {
-  /*margin-top: 10%; 4/4 */
+  margin-top: 10%;
   display: none;
 }
 
@@ -150,12 +137,10 @@ li {
   border-width: 1px;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.2);
-  /*height: 400px; chg 4/4 */
-  height: 16em;
+  height: 400px;
   font-size: 1.5em;
   display: none;
-  /*margin-top: 160px;  4/4 */
-  margin-top: 2em;
+  margin-top: 160px;
 }
 
 #overlay {

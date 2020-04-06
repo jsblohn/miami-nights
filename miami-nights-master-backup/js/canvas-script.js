@@ -9,11 +9,8 @@
 ;==============================================================================
 */
 
-/*let screenWidth = window.innerWidth;
-let screenHeight = window.innerHeight - 200;*/
-
-let screenWidth = $(window).width();  // chg'd 4/4
-let screenHeight = $(window).height() * .79; // chd'd 4/4
+let screenWidth = window.innerWidth;
+let screenHeight = window.innerHeight - 200;
 
 let canvas = document.getElementById("theCanvas");
 canvas.setAttribute("width", screenWidth);
@@ -38,7 +35,6 @@ function drawImage1() {
   img = new Image();
   img.src = "images/palm-tree300x311.png";
   img.addEventListener("load", drawImage2);
-  img.addEventListener("onresize", drawImage2)
 }
 
 function drawImage2() {

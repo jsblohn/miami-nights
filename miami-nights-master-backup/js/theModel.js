@@ -18,30 +18,15 @@ function QuizModel() {
     this.possibleAnswers = possibleAnswers; //answer object literal (string, string)
     this.correctAnswer = correctAnswer; //string
     this.userAnswer = ""; //string
-    this.points = ""; // 4/5
   }
 
-  Question.prototype.setId = function (id) { // 4/4
-    this.id = id;
-  };
   Question.prototype.setUserAnswer = function (userAnswer) {
     this.userAnswer = userAnswer;
   };
 
-  Question.prototype.setCorrectAnswer = function (correctAnswer) { // 4/4
-    this.correctAnswer = correctAnswer;
-  };
-
-  Question.prototype.setPoints = function(userAnswer, correctAnswer) {
-    if (userAnswer === correctAnswer){
-    this.points = "10";
-    console.log(this.userAnswer);}
-    else{console.log(correctAnswer);}
-  }
-  
   Question.prototype.isCorrect = function () {
-    return this.userAnswer === this.correctAnswer, this.points = "10";
-  };
+    return this.userAnswer === this.correctAnswer;
+  }
 
   // Present the questions for the quiz, one at a time
   this.getData = function () {
