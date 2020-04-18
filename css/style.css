@@ -1,10 +1,3 @@
-@font-face {
-  font-family: 'Mr Dafoe';
-  src: url('../fonts/MrDafoe-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
 body {
   display: block;
   background-color: #181719;
@@ -16,18 +9,17 @@ body {
 
 canvas {
   width: 100%;
-  width: min-content;
   position: static;
   z-index: -1;
 }
 
 div {
-  width: 50%;
+  width: 100%;
   margin: auto;
   padding: 0;
 }
 
-.div2 { /*add 4/4*/
+.div2 { 
   width: 66%;
   margin: auto;
   padding: 0;
@@ -35,7 +27,7 @@ div {
 
 h1 {
   color: #840b82;
-  font-family: "Mr Dafoe", serif;
+  font-family: 'Racing Sans One', cursive;
   font-size: 96px;
   text-shadow: 2px 2px #02f8fc;
 }
@@ -50,24 +42,10 @@ h2 {
   color: white;
 }
 
-.tbl {
-  border: none;
-  width: 60%;
-  margin: 0 auto;
-}
-
-/*i {
-  border: solid darkblue;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-}*/
-
 label {
   font-size: 1.5em;
   text-align: left;
   color: #fff;
-  /* width: 75%; */
   margin: 0 auto;
 }
 
@@ -76,33 +54,58 @@ li {
   list-style-type: none;
 }
 
-.btn {
-  position: relative;
-  left: 6%;/* was 20%; 4/4 */
+ul {
+  width: 80%;
+  margin: auto;
+}
+
+table {
   text-align: left;
-  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+th, td {
+  padding: 0em 1em;
+}
+
+tbody td {
+  vertical-align: top;
+}
+
+tr {
+  border-bottom: 1px solid;
 }
 
 .button {
   position: absolute;
-  font-family: Arial, Helvetica, sans-serif;
   float: right;
-  left: 80%;
-  top: 70%; /*was 80%*/
   font-size: 1.25rem;
+  font-family: Arial, Helvetica, sans-serif;
+  left: 85%;
+  top: 70%;
   background-color: darkorange;
   border-color: darkorange;
   border-radius: .5em;
 }
 
 .carousel-inner {
-  padding-top: 6%; /* was 10%;*/ 
+  padding-top: 5%;
+  align-items: center;
 }
 
 .carousel-item {
+  position: relative;
   text-align: left;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 12%;
+  padding-right: 12%;
+}
+
+.fa-check {
+  color: #00FF00;
+}
+
+.fa-times {
+  color: #fe0000;
 }
 
 .instructions {
@@ -111,28 +114,31 @@ li {
   display: block;
 }
 
-.left {
-  transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-}
-
-.right {
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-}
-
-.mx-auto {
-  width: 75%;
-  margin: 0 auto;
-}
-
-.padded {
-  padding: 10px;
+.section {
+  max-width: 1000px;
 }
 
 .summary {
-  /*margin-top: 10%; 4/4 */
+  max-height: 40em; 
+  max-width: 66%; 
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow: auto;
+  margin: auto;
+  margin-top: .5%; 
   display: none;
+}
+
+.summary h2 {
+  background-color: rgba(0, 0, 0, 0.5);;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.tbl tr {
+  border-style: none;
+  width: 100%;
+  margin: 0 auto;
 }
 
 #retry {
@@ -149,12 +155,10 @@ li {
   border-color: black;
   border-width: 1px;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.2);
-  /*height: 400px; chg 4/4 */
+  background-color: rgba(0, 0, 0, 0.3);
   height: 16em;
   font-size: 1.5em;
   display: none;
-  /*margin-top: 160px;  4/4 */
   margin-top: 2em;
 }
 
@@ -166,4 +170,14 @@ li {
   left: 0;
   background-color: rgba(0, 0, 0, 0);
   z-index: 2;
+}
+
+#summaryCanvas {
+  border-radius: 10px;
+  display: none;
+  position: fixed;
+  width: 55%;
+  height: 52%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 99;
 }

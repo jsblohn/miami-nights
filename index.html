@@ -1,49 +1,47 @@
 <!--
-============================================
+===============================================================================
 ; Title:  index.html
 ; Author: Jeff Shepherd, Janet Blohn
 ; Modified By:
 ; Date:   3/14/2020
 ; Description: HTML file to run the JavaScript Quiz
-============================================
+===============================================================================
 -->
 <!DOCTYPE html>
+
 <html lang="en-us">
-  <meta name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-  <meta charset="utf-8">
-  <title>Jeff and Janet JavaScript Trivia</title>
+
   <head>
+    <title>Jeff and Janet Javascript Trivia</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type='text/javascript' src='knockout-3.5.1.js'></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-  <!-- Create the Heading -->
+    <!-- Create the Heading -->
     <div>
       <h1>Miami Nights!</h1>
       <h2>The 80's-Retro JavaScript Quiz</h2>
     </div>
-    
-    <div id="overlay">
 
+    <div id="overlay">
       <!-- Give the instructions for the Quiz -->
-      <div class="instructions">
+      <div class="section instructions">
         <h2 style="font-size: larger;">Instructions</h2>
-        <p class="text-light">There are 10 multiple choice questions. Please choose one answer for each. There is no time limit on this test. Click the "Begin" button to start.</p>
+        <p class="text-light">There are 10 multiple choice questions. Please choose one answer for each. There is no time
+        limit on this test.
+        Click the "Begin" button to start.</p>
       </div>
 
-      <!-- Define the buttons that will be used -->
-      <button id="begin" class="button">BEGIN</button>
-      <button id="submit" class="button">SUBMIT</button>
-      <button id="retry" class="button">RETRY</button>
-
       <!-- Define the Carousel -->
-      <div id="myCarousel" class="carousel slide text-light div2" data-ride="false" data-interval="false">
+      <div id="myCarousel" class="section carousel slide text-light div2" data-ride="false" data-interval="false">
         <div id="innerCarousel" class="carousel-inner"></div>
         <a class="carousel-control-prev padded" href="#myCarousel" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon"></span>
@@ -56,77 +54,35 @@
       </div>
 
       <!-- Display the answers chosen by the user at the end of the Quiz -->
-      <div class="summary text-light">
-        <h2>Summary</h2>
-          <table class="table-sm text-light tbl">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Your Answer</th>
-                <th>Correct Answer</th>
-                <th>Points</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-bind="text: id1"></td>
-                <td data-bind="text: userAnswer1"></td>
-                <td data-bind="text: correctAnswer1"></td>
-                <td data-bind="if: userAnswer1 === correctAnswer1">10</td>
-              </tr>
-              <tr>
-                <td data-bind="text: id2"></td>
-                <td data-bind="text: userAnswer2"></td>
-                <td data-bind="text: correctAnswer2"></td>
-              </tr>
-              <tr>
-                <td data-bind="text: id3"></td>
-                <td data-bind="text: userAnswer3"></td>
-                <td data-bind="text: correctAnswer3"></td>
-              </tr>
-              <tr>
-                <td data-bind="text: id4"></td>
-                <td data-bind="text: userAnswer4"></td>
-                <td data-bind="text: correctAnswer4"></td>
-              </tr>
-              <tr>
-                <td data-bind="text: id5"></td>
-                <td data-bind="text: userAnswer5"></td>
-                <td data-bind="text: correctAnswer5"></td>
-              </tr>
-              <tr>
-                <td data-bind="text: id6"></td>
-                <td data-bind="text: userAnswer6"></td>
-                <td data-bind="text: correctAnswer6"></td>
-              </tr>
-              <tr>
-                <td data-bind="text: id7"></td>
-                <td data-bind="text: userAnswer7"></td>
-                <td data-bind="text: correctAnswer7"></>
-              </tr>
-              <tr>
-                <td data-bind="text: id8"></td>
-                <td data-bind="text: userAnswer8"></td>
-                <td data-bind="text: correctAnswer8"></td>
-              </tr>
-              <tr>
-                <td data-bind="text: id9"></td>
-                <td data-bind="text: userAnswer9"></td>
-                <td data-bind="text: correctAnswer9"></td>
-              </tr>
-              <tr>
-                <td data-bind="text: id10"></td>
-                <td data-bind="text: userAnswer10"></td>
-                <td data-bind="text: correctAnswer10"></td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="section summary text-light">
+        <h2 id="result"></h2>
+        <canvas id="summaryCanvas" width="1000" height="800"></canvas>
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th></th>
+              <th>#</th>
+              <th>Question</th>
+              <th>Correct Answer</th>
+              <th>Your Answer</th>
+            </tr>
+          </thead>
+          <tbody id="summaryTableBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Define the buttons that will be used -->
+      <div>
+        <button id="begin" class="button">BEGIN</button>
+        <button id="submit" class="button">SUBMIT</button>
+        <button id="retry" class="button">RETRY</button>
       </div>
     </div>
-  
+
     <canvas id="theCanvas"></canvas>
-   
+
     <script src="js/canvas-script.js"></script>
+    <script src="js/results-animation.js"></script>
     <script src="js/theModel.js"></script>
     <script src="js/theViewModel.js"></script>
     <script src="js/controller.js"></script>

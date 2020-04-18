@@ -1,14 +1,3 @@
-/*
-===============================================================================
-; Title:  controller.js
-; Author: Jeff Shepherd, Janet Blohn
-; Modified By:
-; Date:   3/14/2020
-; Description: The controller for the JavaScript Quiz.
-; Defines events for the quiz
-;==============================================================================
-*/
-
 let model = new QuizModel();
 let viewModel = new ViewModel(model);
 viewModel.buildHtml();
@@ -25,12 +14,16 @@ $(function () {
     $("#question1").addClass("active");
   });
 
-  $("#submit").click(function () {
+  $("#submit").click( () => {
+    const result = viewModel.report();
+    viewModel.buildSummary();
+    let animation = new ResultAnimation(result.score);
+    animation.startAnimation();
+    $("#result").html(result.score + "% correct.  Rank: " + result.rank);
     $("#myCarousel").hide(400);
-    $(".summary").show(400);
-    $("#submit").fadeOut(200);
+    $("#submit").hide();
     $("#retry").fadeIn(1000);
-    viewModel.report();
+    $(".summary").show(400);
   });
 
   $("#retry").click( () => {

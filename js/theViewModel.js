@@ -1,6 +1,6 @@
 /*
 ===============================================================================
-; Title:  theModel.js
+; Title:  theViewModel.js
 ; Author: Jeff Shepherd, Janet Blohn
 ; Modified By:
 ; Date:   3/14/2020
@@ -19,19 +19,7 @@ function ViewModel(model) {
   let quiz = model.getData();
 
   let observables = {
-    id1: ko.observable(quiz[0].id),
-    id2: ko.observable(quiz[1].id),
-    id3: ko.observable(quiz[2].id),
-    id4: ko.observable(quiz[3].id),
-    id5: ko.observable(quiz[4].id),
-    id6: ko.observable(quiz[5].id),
-    id7: ko.observable(quiz[6].id),
-    id8: ko.observable(quiz[7].id),
-    id9: ko.observable(quiz[8].id),
-    id10: ko.observable(quiz[9].id),
-
     userAnswer1: ko.observable(quiz[0].userAnswer),
-    correctAnswer1: ko.observable(quiz[0].correctAnswer),
     userAnswer2: ko.observable(quiz[1].userAnswer),
     userAnswer3: ko.observable(quiz[2].userAnswer),
     userAnswer4: ko.observable(quiz[3].userAnswer),
@@ -40,53 +28,55 @@ function ViewModel(model) {
     userAnswer7: ko.observable(quiz[6].userAnswer),
     userAnswer8: ko.observable(quiz[7].userAnswer),
     userAnswer9: ko.observable(quiz[8].userAnswer),
-    userAnswer10: ko.observable(quiz[9].userAnswer),
-    
-    correctAnswer2: ko.observable(quiz[1].correctAnswer),
-    correctAnswer3: ko.observable(quiz[2].correctAnswer),
-    correctAnswer4: ko.observable(quiz[3].correctAnswer),
-    correctAnswer5: ko.observable(quiz[4].correctAnswer),
-    correctAnswer6: ko.observable(quiz[5].correctAnswer),
-    correctAnswer7: ko.observable(quiz[6].correctAnswer),
-    correctAnswer8: ko.observable(quiz[7].correctAnswer),
-    correctAnswer9: ko.observable(quiz[8].correctAnswer),
-    correctAnswer10: ko.observable(quiz[9].correctAnswer),
-
-    points1: ko.observable(quiz[0].points)
-
+    userAnswer10: ko.observable(quiz[9].userAnswer)
   };
-  
+
   this.getObservables = function () {
     return observables;
   };
 
-  let observableA = ko.observableArray ([
-    {id1: ko.observable(quiz[0].id), userAnswer1: ko.observable(quiz[0].userAnswer),
-    correctAnswer1: ko.observable(quiz[0].correctAnswer)},
-    {userAnswer2: ko.observable(quiz[1].userAnswer),
-      correctAnswer2: ko.observable(quiz[1].correctAnswer)},
-    {userAnswer3: ko.observable(quiz[2].userAnswer),
-      correctAnswer3: ko.observable(quiz[2].correctAnswer)},
-    {userAnswer4: ko.observable(quiz[3].userAnswer),
-      correctAnswer4: ko.observable(quiz[3].correctAnswer)},
-    {userAnswer5: ko.observable(quiz[4].userAnswer),
-      correctAnswer5: ko.observable(quiz[4].correctAnswer)},
-    {userAnswer6: ko.observable(quiz[5].userAnswer),
-      correctAnswer6: ko.observable(quiz[5].correctAnswer)},
-    {userAnswer7: ko.observable(quiz[6].userAnswer),
-      correctAnswer7: ko.observable(quiz[6].correctAnswer)},
-    {userAnswer8: ko.observable(quiz[7].userAnswer),
-      correctAnswer8: ko.observable(quiz[7].correctAnswer)},
-    {userAnswer9: ko.observable(quiz[8].userAnswer),
-      correctAnswer9: ko.observable(quiz[8].correctAnswer)},
-    {userAnswer10: ko.observable(quiz[9].userAnswer),
-      correctAnswer10: ko.observable(quiz[9].correctAnswer)}
-    ]);
-    
-  this.getObservableA = function () {
-    return observableA;
+  function setAnswers() {
+    let num = 1;
+    quiz.forEach((item) => {
+      item.setUserAnswer(observables["userAnswer" + num]());
+      console.log("Item ID: " + item.id + " Value: " + item.userAnswer);
+      num++;
+    });
+  }
+
+  this.report = function () {
+    setAnswers();
+    let aScore = getUserScore();
+    let aRank = getRank(aScore);
+    return {
+      score: aScore,
+      rank: aRank
+    };
   };
-  
+
+  function getUserScore() {
+    let maxScore = 10;
+    let score = 0;
+    quiz.forEach((item) => {
+      if (item.isCorrect()) {
+        score++;
+      }
+    });
+    return ((score / maxScore) * 100);
+  }
+
+  function getRank(score) {
+      let rank = "";
+      if (score > 79) {
+        rank = "expert!";
+      } else if (score > 59) {
+        rank = "novice.";
+      } else {
+        rank = "beginner."
+      }
+      return rank;
+  }
+
   this.buildHtml = function () {
     quiz.forEach(item => {
       document.getElementById("innerCarousel")
@@ -97,7 +87,9 @@ function ViewModel(model) {
   function getQuestionHTML(item) {
     let output =
       `<div id="question${item.id}" class="carousel-item text-light list-group-flush">
+
     ${item.id}. ${item.question}
+
     <ul>
       <li>
         <label class="btn text-light">
@@ -118,20 +110,42 @@ function ViewModel(model) {
         </label>
       </li>
     </ul>
-
-    <p>You selected &nbsp;<span data-bind="text: userAnswer${item.id}"></span></p>
+    <br>
+    <p>You selected <span data-bind="text: userAnswer${item.id}"></span></p>
 
     </div>`;
     return output;
   }
 
-  this.report = function () { // Added correctAnswer 4/4
-    let num = 1;
-    quiz.forEach((item) => {
-      item.setUserAnswer(observables["userAnswer" + num]());
-      console.log("Item ID: " + item.id + " Value: " + item.userAnswer + " Right: " + item.correctAnswer + item.points);
-      num++;
-    })
-  }
+  this.buildSummary = function () {
+    quiz.forEach(item => {
+      document.getElementById("summaryTableBody")
+        .insertAdjacentHTML("beforeend", getSummaryHTML(item));
+    });
+  };
 
-};
+  function getSummaryHTML(item) {
+    let mark = getSymbol(item.isCorrect());
+    let correctAnswerText = item.possibleAnswers[item.correctAnswer];
+    let userAnswerText = "Skipped";
+    if (item.userAnswer) {
+      userAnswerText = item.possibleAnswers[item.userAnswer];
+        }
+    let output =
+      `${(mark)}
+      <td></td>
+      <td>${item.id}</td>
+       <td>${item.question}</td>
+       <td>${correctAnswerText}</td>
+       <td>${userAnswerText}</td>
+  `; 
+    return output;
+  }
+  function getSymbol(right) {  
+    console.log(right);
+    if (right) {
+    return `<td class="fa fa-check fa-lg"></td`;
+    } else {
+      return `<td class="fa fa-times fa-lg"></td`;
+   }}
+}

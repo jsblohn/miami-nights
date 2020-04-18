@@ -9,11 +9,8 @@
 ;==============================================================================
 */
 
-/*let screenWidth = window.innerWidth;
-let screenHeight = window.innerHeight - 200;*/
-
-let screenWidth = $(window).width();  // chg'd 4/4
-let screenHeight = $(window).height() * .79; // chd'd 4/4
+let screenWidth = $(window).width();  
+let screenHeight = $(window).height() * .79; 
 
 let canvas = document.getElementById("theCanvas");
 canvas.setAttribute("width", screenWidth);
