@@ -76,6 +76,12 @@ tr {
   border-bottom: 1px solid;
 }
 
+.btn {
+  position: relative;
+  text-align: left;
+  font-size: 1.5rem;
+}
+
 .button {
   position: absolute;
   float: right;
@@ -125,7 +131,7 @@ tr {
   background-color: rgba(0, 0, 0, 0.3);
   overflow: auto;
   margin: auto;
-  margin-top: .5%; 
+  margin-top: .8em;
   display: none;
 }
 
@@ -176,8 +182,8 @@ tr {
   border-radius: 10px;
   display: none;
   position: fixed;
-  width: 55%;
-  height: 52%;
+  width: 66%; 
+  height: 30em; 
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 99;
 }

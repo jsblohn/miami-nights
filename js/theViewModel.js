@@ -68,11 +68,11 @@ function ViewModel(model) {
   function getRank(score) {
       let rank = "";
       if (score > 79) {
-        rank = "expert!";
+        rank = "Expert!";
       } else if (score > 59) {
-        rank = "novice.";
+        rank = "Novice";
       } else {
-        rank = "beginner."
+        rank = "Beginner"
       }
       return rank;
   }
@@ -111,8 +111,7 @@ function ViewModel(model) {
       </li>
     </ul>
     <br>
-    <p>You selected <span data-bind="text: userAnswer${item.id}"></span></p>
-
+   
     </div>`;
     return output;
   }
@@ -130,7 +129,8 @@ function ViewModel(model) {
     let userAnswerText = "Skipped";
     if (item.userAnswer) {
       userAnswerText = item.possibleAnswers[item.userAnswer];
-        }
+    }
+
     let output =
       `${(mark)}
       <td></td>
@@ -141,6 +141,7 @@ function ViewModel(model) {
   `; 
     return output;
   }
+
   function getSymbol(right) {  
     console.log(right);
     if (right) {

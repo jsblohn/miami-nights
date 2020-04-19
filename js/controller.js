@@ -19,7 +19,7 @@ $(function () {
     viewModel.buildSummary();
     let animation = new ResultAnimation(result.score);
     animation.startAnimation();
-    $("#result").html(result.score + "% correct.  Rank: " + result.rank);
+    $("#result").html(result.score + "% correct.  &nbsp;Rank: " + result.rank);
     $("#myCarousel").hide(400);
     $("#submit").hide();
     $("#retry").fadeIn(1000);
